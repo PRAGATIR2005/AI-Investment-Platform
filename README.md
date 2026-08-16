@@ -1,24 +1,30 @@
-## AI Investment Platform
+# 🤖 AI Investment Platform
 
-An AI-powered investment portfolio management web application that allows users to securely manage investments, monitor portfolio performance, visualize financial data, and receive portfolio-specific insights through an AI Investment Assistant.
+A full-stack investment portfolio management web application that allows users to securely manage investments, monitor portfolio performance, visualize financial data, and receive portfolio-specific insights through an AI Investment Assistant.
+
+---
 
 ## 📌 Project Overview
 
-The AI Investment Platform is a full-stack web application designed to simplify investment portfolio management.
+The **AI Investment Platform** is a full-stack web application designed to simplify investment portfolio management.
 
 Users can create individual accounts, securely log in, add and manage investments, view portfolio performance, analyze profit and loss, visualize asset allocation, and ask questions about their portfolio.
 
 The application supports multiple users while keeping each user's investment data separate.
 
+---
+
 ## 🎯 Objectives
 
-- Provide secure user registration and authentication.
-- Allow users to manage investment portfolios.
-- Calculate portfolio value, profit/loss, and returns.
-- Provide visual portfolio analytics.
-- Provide portfolio-specific AI-assisted insights.
-- Keep different users' investment data separate.
-- Provide a simple and professional user interface.
+- Provide secure user registration and authentication
+- Allow users to manage investment portfolios
+- Calculate portfolio value, profit/loss, and returns
+- Provide visual portfolio analytics
+- Provide portfolio-specific AI-assisted insights
+- Keep different users' investment data separate
+- Provide a simple and professional user interface
+
+---
 
 ## ✨ Key Features
 
@@ -35,7 +41,7 @@ The application supports multiple users while keeping each user's investment dat
 
 Each user has an independent investment portfolio.
 
-Users can access only the investments associated with their authenticated account.
+Authenticated API requests use the logged-in user's identity to retrieve the corresponding investment data.
 
 ### 💼 Investment Management
 
@@ -82,37 +88,41 @@ Users can ask questions such as:
 - What is the risk of my portfolio?
 - How diversified is my portfolio?
 
-The assistant analyzes the authenticated user's portfolio and provides a relevant response.
+The assistant analyzes the authenticated user's portfolio and provides relevant portfolio-specific insights.
+
+---
 
 ## 🏗️ System Architecture
 
 ```text
-                    USER
-                      │
-                      ▼
-              React Frontend
-                      │
-                 REST API
-                      │
-                      ▼
-              FastAPI Backend
-                      │
-          ┌───────────┴───────────┐
-          │                       │
-          ▼                       ▼
-   Authentication          Portfolio APIs
-          │                       │
-          │                       ▼
-          │                SQLite Database
-          │                       │
-          └───────────┬───────────┘
-                      │
-                      ▼
-             Portfolio Analysis
-                      │
-                      ▼
-           AI Investment Assistant
+                         USER
+                           │
+                           ▼
+                    React Frontend
+                           │
+                       REST API
+                           │
+                           ▼
+                    FastAPI Backend
+                           │
+              ┌────────────┴────────────┐
+              │                         │
+              ▼                         ▼
+       Authentication             Portfolio APIs
+              │                         │
+              │                         ▼
+              │                  SQLite Database
+              │                         │
+              └────────────┬────────────┘
+                           │
+                           ▼
+                  Portfolio Analysis
+                           │
+                           ▼
+                AI Investment Assistant
 ````
+
+---
 
 ## 🛠️ Technology Stack
 
@@ -141,20 +151,21 @@ The assistant analyzes the authenticated user's portfolio and provides a relevan
 * Python Virtual Environment
 * Swagger / OpenAPI
 
+---
+
 ## 📁 Project Structure
 
 ```text
 AI-Investment-Platform/
 │
+├── .gitignore
 ├── README.md
 │
 ├── backend/
 │   ├── ai_engine.py
 │   ├── database.py
-│   ├── investments.db
 │   ├── main.py
-│   ├── models.py
-│   └── venv/
+│   └── models.py
 │
 └── frontend/
     ├── public/
@@ -172,6 +183,10 @@ AI-Investment-Platform/
     ├── index.html
     └── vite.config.js
 ```
+
+> Database files, Python virtual environments, Node modules, and build output are excluded from version control using `.gitignore`.
+
+---
 
 ## 🔑 Authentication Flow
 
@@ -201,6 +216,8 @@ Authenticated requests use:
 Authorization: Bearer <access_token>
 ```
 
+---
+
 ## 💰 Investment Calculations
 
 ### Invested Amount
@@ -227,6 +244,8 @@ Current Value - Invested Amount
 (Profit/Loss ÷ Total Invested) × 100
 ```
 
+---
+
 ## 🤖 AI Investment Assistant
 
 The application contains a portfolio analysis engine that evaluates:
@@ -240,7 +259,7 @@ The application contains a portfolio analysis engine that evaluates:
 
 The user's question is analyzed to determine which portfolio information is relevant.
 
-For example:
+Example:
 
 ```text
 Question:
@@ -262,7 +281,9 @@ Your current portfolio risk score is ...
 
 The AI analysis is based on the currently authenticated user's portfolio.
 
-> Note: The current AI assistant is a project-specific portfolio analysis engine. It does not currently use an external generative AI model such as Gemini or GPT.
+> **Note:** The current AI assistant is a project-specific portfolio analysis engine. It does not currently use an external generative AI model such as Gemini or GPT.
+
+---
 
 ## 🔌 API Endpoints
 
@@ -294,12 +315,14 @@ GET /portfolio/summary
 GET /ai/advice
 ```
 
+---
+
 ## 🚀 Running the Backend
 
-Open a terminal:
+Open a terminal in the project directory:
 
 ```cmd
-cd /d E:\AI-Investment-Platform\backend
+cd backend
 ```
 
 Activate the virtual environment:
@@ -320,27 +343,29 @@ Backend:
 http://127.0.0.1:8000
 ```
 
-Swagger documentation:
+Swagger API documentation:
 
 ```text
 http://127.0.0.1:8000/docs
 ```
+
+---
 
 ## 🌐 Running the Frontend
 
 Open another terminal:
 
 ```cmd
-cd /d E:\AI-Investment-Platform\frontend
+cd frontend
 ```
 
-Install dependencies if required:
+Install dependencies:
 
 ```cmd
 npm install
 ```
 
-Start the frontend:
+Start the development server:
 
 ```cmd
 npm run dev
@@ -351,6 +376,8 @@ Open the URL displayed by Vite, normally:
 ```text
 http://localhost:5173
 ```
+
+---
 
 ## 🧪 Testing Performed
 
@@ -400,7 +427,9 @@ http://localhost:5173
 * [x] Responsive login design
 * [x] Production build verification
 
-## 🔒 Security
+---
+
+## 🔒 Security and Data Isolation
 
 The backend associates every investment with a user ID.
 
@@ -410,9 +439,11 @@ Investment queries are filtered using the authenticated user's ID:
 Investment.user_id == current_user.id
 ```
 
-This prevents normal authenticated requests from returning another user's investments.
+This ensures that authenticated users retrieve investments associated with their own account.
 
 JWT authentication is used for protected API requests.
+
+---
 
 ## 📊 Project Status
 
@@ -432,14 +463,18 @@ JWT authentication is used for protected API requests.
 | Dashboard UI           | ✅ Complete   |
 | Frontend build         | ✅ Successful |
 
+---
+
 ## ⚠️ Limitations
 
 * Investment prices are currently entered manually.
 * Live stock-market data is not currently integrated.
 * The AI assistant uses the application's own portfolio analysis engine rather than a large language model.
 * SQLite is mainly suitable for development and demonstration.
-* Advanced financial forecasting is not included.
+* Advanced financial forecasting is not currently included.
 * The application should not be considered a professional financial advisory system.
+
+---
 
 ## 🔮 Future Enhancements
 
@@ -459,6 +494,8 @@ Possible future improvements include:
 * Advanced risk analysis
 * Automated investment reports
 
+---
+
 ## 🎓 Academic Project
 
 This project demonstrates the integration of:
@@ -472,16 +509,18 @@ This project demonstrates the integration of:
 * AI-assisted application functionality
 * Full-stack web development
 
+---
+
 ## ⚠️ Disclaimer
 
 This application is developed for educational and demonstration purposes.
 
 The portfolio insights generated by the application should not be considered professional financial advice.
 
+---
+
 ## 📌 Project
 
 **AI Investment Platform**
 
 A full-stack investment portfolio management and AI-assisted analysis application.
-
-
